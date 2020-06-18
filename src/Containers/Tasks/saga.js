@@ -46,16 +46,3 @@ export function* updateTasksSaga(){
     }
 }
 
-// export function* deleteTasksSaga(){
-//     for(;;){
-//         const userId = yield take(types.DELETE_TASKS_REQUEST)
-        
-//         try {
-//            const response = yield call(deleteTasks,userId.payload) 
-//            yield put(deleteTasksSuccess(response.data))
-//            yield put(getTasksRequest())
-//         } catch (error) {
-//             yield put(deleteTasksFail(error))
-//         }
-//     }
-// }

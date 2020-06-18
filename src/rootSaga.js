@@ -9,6 +9,5 @@ export default function* rootSaga(){
         fork(tasksSaga),
         fork(createTasksSaga),
         fork(updateTasksSaga),
-        // fork(deleteTasksSaga),
     ])
 }

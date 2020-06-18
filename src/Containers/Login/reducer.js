@@ -4,7 +4,6 @@ const initialState = {
     loader: false,
     error: null,
     user: null,
-    updateUser: null
 }
 
 export default function loginReducer(state = initialState, action) {

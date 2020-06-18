@@ -56,25 +56,6 @@ export function updateTasksFail(error) {
     }
 }
 
-// export function deleteTasksRequest(userId) {
-//     return {
-//         type:types.DELETE_TASKS_REQUEST,
-//         payload:userId
-//     }
-// }
-// export function deleteTasksSuccess(response) {
-//     return {
-//         type:types.DELETE_TASKS_SUCCESS,
-//         payload:response
-//     }
-// }
-// export function deleteTasksFail(error) {
-//     return {
-//         type:types.DELETE_TASKS_FAIL,
-//         payload:error
-//     }
-// }
-
 export function resetTasksError() {
     return {
         type:types.RESET_TASKS_ERROR

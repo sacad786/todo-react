@@ -12,10 +12,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function DisplayTasks(props) {
-    console.log(props);
-
-    const Tasks = props.tasksdata
-    
+    const Tasks = props.tasksdata || [];
     
     return (
         <div style={{ margin: '110px' }}>

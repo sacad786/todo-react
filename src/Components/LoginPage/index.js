@@ -17,7 +17,7 @@ export class LoginPage extends Component {
 
     clearForm(){
         this.setState({
-            userName:  "" ,
+            userName:  '' ,
         })
     }
 
