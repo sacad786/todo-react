@@ -17,6 +17,11 @@ export function createTasks(task) {
 }
 
 export function updateTasks(task) {
-    return Axios.put(`http://localhost:8080/api/user/${task.userId}/task/${task.userId}`, task)
+    console.log(task);
+    
+    return Axios.put(`http://localhost:8080/api/user/${task.userId}/task/${task.taskId}`, task)
+}
+export function deleteTasks(task) {
+    return Axios.delete(`http://localhost:8080/api/user/${task.userId}/task/${task.taskId}`)
 }
 

@@ -34,14 +34,16 @@ export default function DisplayTasks(props) {
                                 </TableCell>
                                 <TableCell>{task.description}</TableCell>
                                 <TableCell><Fab color="secondary" aria-label="edit" size="medium"
-                                 onClick={()=> {props.handleUpdateTasks(task)}}
+                                 onClick={()=> {props.handleUpdateTasks(task)
+                                console.log(task);
+                                }}
                                 >
                                     <EditIcon />
                                 </Fab></TableCell>
                                 <TableCell><Fab
                                     style={{ color: "red", backgroundColor: "white" }}
                                     aria-label="edit" size="medium"
-                                    // onClick={()=>{props.handleDeleteTasksWarning(task.id)}}
+                                    onClick={()=>{props.deleteTasksRequest(task.id)}}
                                     >
                                     <DeleteIcon />
                                 </Fab></TableCell>

@@ -1,7 +1,7 @@
 import {take,call,put} from 'redux-saga/effects'
 import * as types from '../../actionTypes'
 import { getTasks, createTasks, updateTasks, deleteTasks } from '../../requests'
-import { GetTasksSuccess, GetTasksFail, createTasksFail, createTasksSuccess, updateTasksSuccess, updateTasksFail, getTasksRequest, deleteTasksSuccess, deleteTasksFail } from './action'
+import { GetTasksSuccess, GetTasksFail, createTasksFail, createTasksSuccess, updateTasksSuccess, updateTasksFail, deleteTasksSuccess, deleteTasksFail } from './action'
 import { getUsersByUsernameRequest } from '../Login/action'
 
 export function* tasksSaga(){
@@ -40,8 +40,26 @@ export function* updateTasksSaga(){
         try {
            const response = yield call(updateTasks,actionRequest.payload) 
            yield put(updateTasksSuccess(response))
+           yield put(getUsersByUsernameRequest(actionRequest.payload.username))
         } catch (error) {
             yield put(updateTasksFail(error))
+        }
+    }
+}
+
+export function* deleteTasksSaga(){
+    for(;;){
+       const actionRequest = yield take(types.DELETE_TASKS_REQUEST)
+       console.log(actionRequest);
+
+        try {
+           const response = yield call(deleteTasks,actionRequest.payload) 
+           console.log(response);
+           
+           yield put(deleteTasksSuccess(response))
+           yield put(getUsersByUsernameRequest(actionRequest.payload.username))
+        } catch (error) {
+            yield put(deleteTasksFail(error))
         }
     }
 }

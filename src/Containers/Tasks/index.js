@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createTasksRequest, updateTasksRequest} from './action'
+import { createTasksRequest, updateTasksRequest, deleteTasksRequest} from './action'
 import { Dialog, DialogActions, Button } from '@material-ui/core'
 import DisplayTasks from '../../Components/DisplayTasks'
 import CreateTaskForm from '../../Components/CreateTaskForm'
@@ -50,9 +50,17 @@ export class Tasks extends Component {
         this.props.dispatch(createTasksRequest(task))
     }
 
-    dispatchUpdateTasksRequest(user) {
-        this.props.dispatch(updateTasksRequest(user))
+    dispatchUpdateTasksRequest(task) {
+        task.userId = this.props.loginState.user.id
+        task.taskId = this.props.loginState.user.tasks[0].id
+        this.props.dispatch(updateTasksRequest(task))
         this.handleCloseDialog()
+    }
+
+    dispatchDeleteTasksRequest(task) {
+        task.userId = this.props.loginState.user.id
+        task.taskId = this.props.loginState.user.tasks[0].id
+        this.props.dispatch(deleteTasksRequest(task))
     }
 
     render() {
@@ -85,6 +93,7 @@ export class Tasks extends Component {
                 <DisplayTasks
                     tasksdata={tasks}
                     handleUpdateTasks={this.handleUpdateTasks.bind(this)}
+                    deleteTasksRequest={this.dispatchDeleteTasksRequest.bind(this)}
                 />
               
             </div>
