@@ -41,7 +41,7 @@ export class CreateUserForm extends Component {
         return (
             <div>
                 <h1 align="center">Create Users</h1>
-                <form align="center">
+                <div align="center">
                     <TextField
                         id="outlined-basic"
                         name="username"
@@ -52,6 +52,7 @@ export class CreateUserForm extends Component {
                         style={{ padding:"10px"}}
                         size="small"
                     />
+                    <br/>
                     <TextField
                         id="outlined-basic"
                         name="firstname"
@@ -62,6 +63,7 @@ export class CreateUserForm extends Component {
                         style={{ padding:"10px"}}
                         size="small"
                     />
+                    <br/>
                     <TextField
                         id="outlined-basic"
                         name="lastname"
@@ -72,6 +74,7 @@ export class CreateUserForm extends Component {
                         style={{ padding:"10px"}}
                         size="small"
                     />
+                    <br/>
                     <Button
                         variant="contained"
                         color="secondary"
@@ -81,7 +84,7 @@ export class CreateUserForm extends Component {
                     >
                         Submit
                     </Button>
-                </form>
+                </div>
             </div>
         )
     }

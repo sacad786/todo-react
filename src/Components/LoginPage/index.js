@@ -34,7 +34,7 @@ export class LoginPage extends Component {
         return (
             <div>
                 <h1 align="center">Log In</h1>
-                <form align="center">
+                <div align="center">
                     <p style={{color:"red", display: (this.props.loginState.error) ? 'block' : 'none' }}>{this.props.loginState.error}</p>
                     <TextField
                         id="outlined-basic"
@@ -46,7 +46,7 @@ export class LoginPage extends Component {
                         style={{ padding:"10px"}}
                         size="small"
                     />
-                    
+                    <br/>
                     <Button
                         variant="contained"
                         color="secondary"
@@ -56,7 +56,7 @@ export class LoginPage extends Component {
                     >
                         Log In
                     </Button>
-                </form>
+                </div>
             </div>
         )
     }
