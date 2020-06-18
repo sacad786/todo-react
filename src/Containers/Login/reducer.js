@@ -23,15 +23,6 @@ export default function loginReducer(state = initialState, action) {
         case types.CREATE_USERS_FAIL:
             return {...state, loader: false, error: action.payload};
 
-        case types.UPDATE_TASKS_REQUEST:
-            return {...state, loader: true, error: null};
-        case types.UPDATE_TASKS_SUCCESS:
-            return {...state, loader: false, updateUser: action.payload};
-        case types.UPDATE_TASKS_FAIL:
-            return {...state, loader: false, error: action.payload};    
-        
-        case types.RESET_USERS_ERROR:
-            return {...state, loader: false, error: null, user:null}
         case types.LOGOUT:
             return {...state, loader: false, error: null, user:null, updateUser:null}
     
