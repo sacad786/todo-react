@@ -35,7 +35,6 @@ export default function DisplayTasks(props) {
                                 <TableCell>{task.description}</TableCell>
                                 <TableCell><Fab color="secondary" aria-label="edit" size="medium"
                                  onClick={()=> {props.handleUpdateTasks(task)
-                                console.log(task);
                                 }}
                                 >
                                     <EditIcon />

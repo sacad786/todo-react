@@ -51,15 +51,22 @@ export class Tasks extends Component {
     }
 
     dispatchUpdateTasksRequest(task) {
+        task.username = this.props.loginState.user.user_name
         task.userId = this.props.loginState.user.id
-        task.taskId = this.props.loginState.user.tasks[0].id
         this.props.dispatch(updateTasksRequest(task))
         this.handleCloseDialog()
     }
 
-    dispatchDeleteTasksRequest(task) {
-        task.userId = this.props.loginState.user.id
-        task.taskId = this.props.loginState.user.tasks[0].id
+    dispatchDeleteTasksRequest(taskId) {
+        console.log(taskId);
+        const task = {
+            username : this.props.loginState.user.user_name,
+            userId : this.props.loginState.user.id,
+            id: taskId
+        }
+
+        console.log(task);
+        
         this.props.dispatch(deleteTasksRequest(task))
     }
 

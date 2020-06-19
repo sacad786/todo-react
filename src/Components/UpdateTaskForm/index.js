@@ -5,8 +5,8 @@ export class UpdateTaskForm extends Component {
     constructor(props) {
         super()
         this.state = {
-            name: '',
-            description: '',
+            name: null,
+            description: null,
             showUpdateError: false
         }
     }
@@ -20,6 +20,7 @@ export class UpdateTaskForm extends Component {
         const task = {
             name,
             description,
+            id: this.props.tasks.id
         }
 
         if (!name && !description) {

@@ -36,7 +36,6 @@ export function* createTasksSaga(){
 export function* updateTasksSaga(){
     for(;;){
        const actionRequest = yield take(types.UPDATE_TASKS_REQUEST)
-
         try {
            const response = yield call(updateTasks,actionRequest.payload) 
            yield put(updateTasksSuccess(response))
@@ -50,12 +49,8 @@ export function* updateTasksSaga(){
 export function* deleteTasksSaga(){
     for(;;){
        const actionRequest = yield take(types.DELETE_TASKS_REQUEST)
-       console.log(actionRequest);
-
         try {
            const response = yield call(deleteTasks,actionRequest.payload) 
-           console.log(response);
-           
            yield put(deleteTasksSuccess(response))
            yield put(getUsersByUsernameRequest(actionRequest.payload.username))
         } catch (error) {
