@@ -1,42 +1,25 @@
-export const GET_USERS_REQUEST = "get-users-request"
-export const GET_USERS_SUCCESS = "get-users-success"
-export const GET_USERS_FAIL = "get-users-fail"
+export const GET_USERNAME_REQUEST = 'get-username-request'
+export const GET_USERNAME_SUCCESS = 'get-username-success'
+export const GET_USERNAME_FAIL = 'get-username-fail'
 
-export const CREATE_USERS_REQUEST = "create-users-request"
-export const CREATE_USERS_SUCCESS = "create-users-success"
-export const CREATE_USERS_FAIL = "create-users-fail"
+export const CREATE_USER_REQUEST = 'create-user-request'
+export const CREATE_USER_SUCCESS = 'create-user-success'
+export const CREATE_USER_FAIL = 'create-user-fail'
 
-export const UPDATE_USERS_REQUEST = "update-users-request"
-export const UPDATE_USERS_SUCCESS = "update-users-success"
-export const UPDATE_USERS_FAIL = "update-users-fail"
+export const GET_TASK_REQUEST = 'get-task-request'
+export const GET_TASK_SUCCESS = 'get-task-success'
+export const GET_TASK_FAIL = 'get-task-fail'
 
-export const DELETE_USERS_REQUEST = "delete-users-request"
-export const DELETE_USERS_SUCCESS = "delete-users-success"
-export const DELETE_USERS_FAIL = "delete-users-fail"
+export const CREATE_TASK_REQUEST = 'create-task-request'
+export const CREATE_TASK_SUCCESS = 'create-task-success'
+export const CREATE_TASK_FAIL = 'create-task-fail'
 
-export const RESET_USERS_ERROR = "resetUsersError"
+export const UPDATE_TASK_REQUEST = 'update-task-request'
+export const UPDATE_TASK_SUCCESS = 'update-task-success'
+export const UPDATE_TASK_FAIL = 'update-task-fail'
 
-export const GET_USERS_BY_USERNAME_REQUEST = "get-users-by-username-request"
-export const GET_USERS_BY_USERNAME_SUCCESS = "get-users-by-username-success"
-export const GET_USERS_BY_USERNAME_FAIL = "get-users-by-username-fail"
+export const DELETE_TASK_REQUEST = 'delete-task-request'
+export const DELETE_TASK_SUCCESS = 'delete-task-success'
+export const DELETE_TASK_FAIL = 'delete-task-fail'
 
-export const GET_TASKS_REQUEST = "get-tasks-request"
-export const GET_TASKS_SUCCESS = "get-tasks-success"
-export const GET_TASKS_FAIL = "get-tasks-fail"
-
-export const CREATE_TASKS_REQUEST = "create-tasks-request"
-export const CREATE_TASKS_SUCCESS = "create-tasks-success"
-export const CREATE_TASKS_FAIL = "create-tasks-fail"
-
-export const UPDATE_TASKS_REQUEST = "update-tasks-request"
-export const UPDATE_TASKS_SUCCESS = "update-tasks-success"
-export const UPDATE_TASKS_FAIL = "update-tasks-fail"
-
-export const DELETE_TASKS_REQUEST = "delete-tasks-request"
-export const DELETE_TASKS_SUCCESS = "delete-tasks-success"
-export const DELETE_TASKS_FAIL = "delete-tasks-fail"
-
-export const RESET_TASKS_ERROR = "resettasksError"
-export const LOGOUT = "logout"
-
-
+export const LOGOUT = 'logout'

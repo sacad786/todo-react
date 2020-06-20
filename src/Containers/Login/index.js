@@ -1,68 +1,62 @@
 import React, { Component } from 'react'
-import LoginPage from '../../Components/LoginPage'
-import { getUsersByUsernameRequest } from './action'
-import { connect } from 'react-redux'
+import LoginPage from '../../Components/Login/LoginPage'
+import Register from '../../Components/Register/Register'
 import { Button } from '@material-ui/core'
-import CreateUserForm from '../../Components/CreateUserForm'
-import { createUsersRequest } from '../Login/action'
-import DisplayTasks from '../../Components/DisplayTasks'
+import { connect } from 'react-redux'
+import { getUserNameRequest, createUserRequest } from './action'
 
 export class Login extends Component {
-    constructor(props) {
+    constructor() {
         super()
         this.state = {
             showLogin: true
         }
     }
 
-    componentDidUpdate() {
-        if (this.props.loginState.user) {
-            this.props.history.push("/tasks")
+    componentWillMount(){
+        if(this.props.loginState.user){
+            this.props.history.push('/tasks')
+        }
+    }
+
+    componentDidUpdate(){
+        if(this.props.loginState.user){
+            this.props.history.push('/tasks')
         }
     }
     
-    componentWillMount() {
-        if (this.props.loginState.user) {
-            this.props.history.push("/tasks")
-        }
+    dispatchUserRequest(username) {
+        this.props.dispatch(getUserNameRequest(username))
     }
 
-    routeChange() {
-        this.setState({
-            showLogin: false
-        })
-    }
-
-    dispatchUserByUsernameRequest(username) {
-        this.props.dispatch(getUsersByUsernameRequest(username))
-    }
-
-    dispatchUserRequest(user) {
-        this.props.dispatch(createUsersRequest(user))
+    dispatchCreateUserRequest(user){
+        this.props.dispatch(createUserRequest(user))
     }
 
     render() {
         return (
             <div>
-                <div style={{ textAlign: 'center', margin: "20px" }}>
-                    <Button
-                        style={{ margin: "20px" }}
-                        variant={!this.state.showLogin ? "contained" : "outlined"}
-                        color="secondary"
-                        onClick={() => { this.setState({ showLogin: false }) }}
-                    >Register</Button>
-                    <Button
-                        variant={this.state.showLogin ? "contained" : "outlined"}
-                        color="secondary"
-                        onClick={() => { this.setState({ showLogin: true }) }}
-                    >Sign In</Button>
-                </div>
-                {this.state.showLogin ? 
-                <LoginPage
-                    dispatchUserByUsernameRequest={this.dispatchUserByUsernameRequest.bind(this)}
-                /> :
-                    <CreateUserForm
-                        dispatchUserRequest={this.dispatchUserRequest.bind(this)}
+                <Button
+                    variant={this.state.showLogin ? "outlined" : "contained"}
+                    color="secondary"
+                    style={{ textAlign: 'center', margin: "20px" }}
+                    onClick={() => this.setState({showLogin: false})}
+                >
+                    Register
+                    </Button>
+                <Button
+                    variant={this.state.showLogin ? "contained" : "outlined"}
+                    color="secondary"
+                    onClick={() => this.setState({showLogin: true})}
+                >
+                    Sign In
+                    </Button>
+                {this.state.showLogin ?
+                    <LoginPage
+                        dispatchUserRequest = {this.dispatchUserRequest.bind(this)}  
+                    /> :
+                    <Register
+                        dispatchCreateUserRequest={this.dispatchCreateUserRequest.bind(this)}
                     />
                 }
             </div>
@@ -71,7 +65,5 @@ export class Login extends Component {
 }
 
 export default connect(state => ({
-    loginState: state.login,
-    usersState: state.users
+    loginState: state.login
 }))(Login)
-

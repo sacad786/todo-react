@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TextField, Button } from '@material-ui/core'
 
 export class CreateTaskForm extends Component {
-    constructor(props) {
+    constructor() {
         super()
         this.state = {
             name: '',
@@ -14,61 +14,55 @@ export class CreateTaskForm extends Component {
             [e.target.name]: e.target.value
         })
     }
-
     clearForm(){
         this.setState({
             name:  "" ,
             description: "" ,
         })
     }
-
-    handleFormChange(){
-        const {name, description, } = this.state
-        let task = {
+    hanleSumbitChange(){
+        const {name, description} = this.state
+        const task = {
             name,
-            description
+            description,
         }
-       
         if (!name) {
             return
         }
-        this.props.dispatchTasksRequest(task);
+        console.log(task);
+        
+        this.props.dispatchCreateTask(task)
         this.clearForm()
     }
     render() {
         return (
             <div>
-                <h1 align="center">Create Tasks</h1>
-                <form align="center">
+                <form>
                     <TextField
-                        id="outlined-basic"
                         name="name"
                         value={this.state.name}
                         onChange={this.handleTextChange.bind(this)}
-                        label="Name"
+                        label="name"
                         variant="outlined"
-                        style={{ padding:"10px"}}
-                        size="small"
+                        style={{ textAlign: 'center', margin: "10px" }}
                     />
                     <TextField
-                        id="outlined-basic"
                         name="description"
                         value={this.state.description}
                         onChange={this.handleTextChange.bind(this)}
-                        label="Description"
+                        label="description"
                         variant="outlined"
-                        style={{ padding:"10px"}}
-                        size="small"
+                        style={{ textAlign: 'center', margin: "10px" }}
                     />
                     <Button
                         variant="contained"
                         color="secondary"
-                        onClick={this.handleFormChange.bind(this)}
-                        style={{ marginTop:"9px"}}
-                        size="large"
+                        onClick={this.hanleSumbitChange.bind(this)}
+                        style={{ textAlign: 'center', margin: "10px" }}
+                        size = 'large'
                     >
                         Submit
-                    </Button>
+            </Button>
                 </form>
             </div>
         )
@@ -76,3 +70,5 @@ export class CreateTaskForm extends Component {
 }
 
 export default CreateTaskForm
+
+

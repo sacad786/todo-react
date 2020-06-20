@@ -1,30 +1,29 @@
-import {take,call,put} from 'redux-saga/effects'
 import * as types from '../../actionTypes'
-import { getUsersByUsername, createUsers } from '../../requests'
-import { getUsersByUsernameFail, getUsersByUsernameSuccess, createUsersSuccess, createUsersFail, getUsersByUsernameRequest } from './action'
+import {take , call, put} from 'redux-saga/effects'
+import {getUserNameSuccess, getUserNameFail, createUserSuccess, createUserFail, getUserNameRequest } from './action';
+import { getUsername, createUser } from '../../requests';
 
-export function* loginSaga() {
-    for (;;) {
-        const actionRequest = yield take(types.GET_USERS_BY_USERNAME_REQUEST)
+export function* LoginSaga() {
+    for(;;){
+        const actionRequest = yield take(types.GET_USERNAME_REQUEST);
         try {
-           const response = yield call(getUsersByUsername, actionRequest.payload) 
-           yield put(getUsersByUsernameSuccess(response.data))
+            const response = yield call(getUsername, actionRequest.payload.user_name)
+            yield put(getUserNameSuccess(response))
         } catch (error) {
-            yield put(getUsersByUsernameFail(error.response.data))
-        }   
+            yield put(getUserNameFail(error))
+        }
     }
 }
 
-export function* createUsersSaga(){
+export function* RegisterSaga() {
     for(;;){
-       const actionRequest   =  yield take(types.CREATE_USERS_REQUEST)
- 
+        const actionRequest = yield take(types.CREATE_USER_REQUEST);
         try {
-           const response = yield call(createUsers, actionRequest.payload) 
-           yield put(createUsersSuccess(response.data))
-           yield put(getUsersByUsernameRequest(response.data.user_name))
+            const response = yield call(createUser, actionRequest.payload)
+            yield put(createUserSuccess(response.data))
+           yield put(getUserNameRequest(response.data.user_name))
         } catch (error) {
-            yield put(createUsersFail(error.response.data))
+            yield put(createUserFail(error.response.data))
         }
     }
 }

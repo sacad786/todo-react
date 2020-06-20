@@ -1,46 +1,39 @@
 import * as types from '../../actionTypes'
 
-export function getUsersByUsernameRequest(username) {
+export function getUserNameRequest(username) {
     return {
-        type:types.GET_USERS_BY_USERNAME_REQUEST,
-        payload:username
+        type: types.GET_USERNAME_REQUEST,
+        payload: username
     }
 }
-export function getUsersByUsernameSuccess(response) {
+export function getUserNameSuccess(response) {
     return {
-        type:types.GET_USERS_BY_USERNAME_SUCCESS,
-        payload:response
+        type: types.GET_USERNAME_SUCCESS,
+        payload: response
     }
 }
-export function getUsersByUsernameFail(error) {
+export function getUserNameFail(error) {
     return {
-        type:types.GET_USERS_BY_USERNAME_FAIL,
-        payload:error
-    }
-}
-
-
-export function createUsersRequest(user) {
-    return {
-        type:types.CREATE_USERS_REQUEST,
-        payload:user
-    }
-}
-export function createUsersSuccess(response) {
-    return {
-        type:types.CREATE_USERS_SUCCESS,
-        payload:response
-    }
-}
-export function createUsersFail(error) {
-    return {
-        type:types.CREATE_USERS_FAIL,
-        payload:error
+        type: types.GET_USERNAME_FAIL,
+        payload: error
     }
 }
 
-export function logoutRequest() {
+export function createUserRequest(user) {
     return {
-        type: types.LOGOUT,
+        type: types.CREATE_USER_REQUEST,
+        payload: user
+    }
+}
+export function createUserSuccess(response) {
+    return {
+        type: types.CREATE_USER_SUCCESS,
+        payload: response
+    }
+}
+export function createUserFail(error) {
+    return {
+        type: types.CREATE_USER_FAIL,
+        payload: error
     }
 }

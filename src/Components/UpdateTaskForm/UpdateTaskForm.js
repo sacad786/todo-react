@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TextField, Button } from '@material-ui/core'
 
 export class UpdateTaskForm extends Component {
-    constructor(props) {
+    constructor() {
         super()
         this.state = {
             name: null,
@@ -10,57 +10,53 @@ export class UpdateTaskForm extends Component {
             showUpdateError: false
         }
     }
-    handleTextChange(e) {
+    handleTextChange(e){
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name] : e.target.value
         })
     }
-    handleFormChange(){
-        const {name, description, } = this.state
+    hanleSumbitChange(){
+        const {name, description} = this.state
         const task = {
-            name,
-            description,
-            id: this.props.tasks.id
+            first_name: name,
+            last_name: description,
         }
-
-        if (!name && !description) {
+        if (!name || !description) {
             return this.setState({ 
                 showUpdateError: true
             })
         }
-
-        this.props.dispatchUpdateTasksRequest(task)
+        this.props.dispatchUpdateTaskRequest(task)
     }
-  
     render() {
         return (
             <div>
                 <p style={{color: 'red', textAlign: 'center' , display: (this.state.showUpdateError) ? 'block' : 'none'}}>task not updated</p>
-                <form align="center" style={{ margin: "5%"}}>
+                <form>
                     <TextField
-                        id="outlined-basic"
                         name="name"
-                        value={this.state.name === null ? this.props.tasks.name : this.state.name}
+                        value={this.state.name === null ? this.props.task.name : this.state.name}
                         onChange={this.handleTextChange.bind(this)}
                         label="Name"
                         variant="outlined"
+                        style={{ textAlign: 'center', margin: "10px" }}
                     />
-                    <br/><br/>
+                    <br/>
                     <TextField
-                        id="outlined-basic"
                         name="description"
-                        value={this.state.description === null ? this.props.tasks.description : this.state.description}
+                        value={this.state.description === null ? this.props.task.description : this.state.description}
                         onChange={this.handleTextChange.bind(this)}
-                        label="Description"
+                        label="description"
                         variant="outlined"
+                        style={{ textAlign: 'center', margin: "10px" }}
                     />
-                    <br/><br/>
+                    <br/>
                     <Button
                         variant="contained"
                         color="secondary"
-                        onClick={this.handleFormChange.bind(this)}
+                        onClick={this.hanleSumbitChange.bind(this)}
                     >
-                        Submit
+                    Submit
                     </Button>
                 </form>
             </div>

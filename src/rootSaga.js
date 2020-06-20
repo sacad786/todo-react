@@ -1,14 +1,11 @@
-import { all, fork } from "redux-saga/effects";
-import { tasksSaga, createTasksSaga, deleteTasksSaga, updateTasksSaga } from "./Containers/Tasks/saga";
-import { loginSaga, createUsersSaga, } from "./Containers/Login/saga";
+import {all, fork} from 'redux-saga/effects'
+import {LoginSaga, RegisterSaga} from './Containers/Login/saga'
+import { getTasksSaga } from './Containers/Task/saga'
 
-export default function* rootSaga(){
+export default function* rootSaga() {
     yield all([
-        fork(createUsersSaga),
-        fork(loginSaga),
-        fork(tasksSaga),
-        fork(createTasksSaga),
-        fork(updateTasksSaga),
-        fork(deleteTasksSaga)
+        fork(LoginSaga),
+        fork(RegisterSaga),
+        fork(getTasksSaga)
     ])
 }
