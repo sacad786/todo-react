@@ -1,6 +1,6 @@
 import * as types from '../../actionTypes'
 import {take , call, put} from 'redux-saga/effects'
-import { getUserNameSuccess, getUsernameFail } from './action'
+import { getUserNameSuccess, getUsernameFail, createUserSuccess, createUserFail } from './action'
 import { getUsername, createUser } from '../../requests'
 
 
@@ -11,7 +11,7 @@ export function* LoginSaga() {
             const response = yield call(getUsername, actionRequest.payload)
             yield put(getUserNameSuccess(response.data))
         } catch (error) {
-            yield put(getUsernameFail(error))
+            yield put(getUsernameFail(error.response.data))
         }
     }
 }
@@ -21,9 +21,10 @@ export function* RegisterSaga() {
         const actionRequest = yield take(types.CREATE_USER_REQUEST)
         try {
             const response = yield call(createUser, actionRequest.payload)
+            yield put(createUserSuccess(response.data))
             yield put(getUserNameSuccess(response.data))
         } catch (error) {
-            yield put(getUsernameFail(error))
+            yield put(createUserFail(error.response.data))
         }
     }
 }

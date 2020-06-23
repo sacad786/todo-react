@@ -22,7 +22,7 @@ export class UpdateTaskForm extends Component {
             description,
             id: this.props.tasks.id
         }
-        if (!name || !description) {
+        if (!name) {
             return this.setState({ 
                 showUpdateError: true
             })
@@ -32,7 +32,7 @@ export class UpdateTaskForm extends Component {
     render() {
         return (
             <div style={{ textAlign: 'center', margin: "10px" }}>
-                <p style={{color: 'red', textAlign: 'center' , display: (this.state.showUpdateError) ? 'block' : 'none'}}>task not updated</p>
+                <p style={{color: 'red', textAlign: 'center' , display: (this.state.showUpdateError) ? 'block' : 'none'}}>To update, please change the name field or click the cancel button</p>
                 <form>
                     <TextField
                         name="name"

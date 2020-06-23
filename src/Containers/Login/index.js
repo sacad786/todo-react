@@ -47,6 +47,11 @@ export class Login extends Component {
                 >
                     Register
                 </Button>
+                <div>
+                {this.props.loginState.error ? <p style={{ color: "red"}}>{this.props.loginState.error + " Please register"}</p>: ''}
+                {this.props.loginState.ddd ? <p style={{ color: "green"}}>{this.props.loginState.ddd + " Please register"}</p>: ''}
+                <br/>
+                </div>
                 {this.state.login
                  ?<LoginPage
                     getUserRequested={this.getUserRequested.bind(this)}
