@@ -3,28 +3,29 @@ import * as types from '../../actionTypes'
 const initialState = {
     user: null,
     error: null,
-    loader: false
+    loader: null
 }
 
 export default function loginReducer(state = initialState, action) {
     switch (action.type) {
         case types.GET_USERNAME_REQUEST:
-         return {...state, loader: true, error: null}
+            return {...state, loader: true, error: null}
         case types.GET_USERNAME_SUCCESS:
-         return {...state, loader: false, user: action.payload}
+            return {...state, loader: false, user: action.payload}
         case types.GET_USERNAME_FAIL:
-         return {...state, loader: false, error: action.payload}
+            return {...state, loader: false, error: action.payload}
 
         case types.CREATE_USER_REQUEST:
-         return {...state, loader: true, error: null}
+            return {...state, loader: true, error: null}
         case types.CREATE_USER_SUCCESS:
-         return {...state, loader: false, user: action.payload}
+            return {...state, loader: false, user: action.payload}
         case types.CREATE_USER_FAIL:
-         return {...state, loader: false, error: action.payload}
+            return {...state, loader: false, error: action.payload}
 
         case types.LOGOUT:
-         return {...state, loader: false, error: null, user:null}
-
+            return {...state, user: null, error: null, loader: null}
+            
+        
         default:
             return state
     }

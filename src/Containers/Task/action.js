@@ -74,9 +74,3 @@ export function deleteTaskFail(error) {
         payload: error
     }
 }
-
-export function logoutRequest() {
-    return {
-        type: types.LOGOUT,
-    }
-}

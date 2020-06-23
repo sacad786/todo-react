@@ -1,6 +1,6 @@
-import * as types from '../../actionTypes'
+import * as types from '../../actionTypes' 
 
-export function getUserNameRequest(username) {
+export function getUsernameRequest(username) {
     return {
         type: types.GET_USERNAME_REQUEST,
         payload: username
@@ -12,7 +12,7 @@ export function getUserNameSuccess(response) {
         payload: response
     }
 }
-export function getUserNameFail(error) {
+export function getUsernameFail(error) {
     return {
         type: types.GET_USERNAME_FAIL,
         payload: error
@@ -35,5 +35,11 @@ export function createUserFail(error) {
     return {
         type: types.CREATE_USER_FAIL,
         payload: error
+    }
+}
+
+export function logoutRequest() {
+    return {
+        type: types.LOGOUT,
     }
 }

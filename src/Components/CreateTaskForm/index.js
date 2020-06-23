@@ -9,9 +9,9 @@ export class CreateTaskForm extends Component {
             description: '',
         }
     }
-    handleTextChange(e) {
+    handleTextChange(e){
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name] : e.target.value
         })
     }
     clearForm(){
@@ -20,31 +20,29 @@ export class CreateTaskForm extends Component {
             description: "" ,
         })
     }
-    hanleSumbitChange(){
+    hanleSubmitChange(){
         const {name, description} = this.state
         const task = {
             name,
             description,
         }
-        if (!name) {
+        if (!name || !description) {
             return
         }
-        console.log(task);
-        
-        this.props.dispatchCreateTask(task)
+        this.props.dispatchCreateTaskRequest(task)
         this.clearForm()
     }
     render() {
         return (
-            <div>
-                <form>
+            <div className="App" >
                     <TextField
                         name="name"
                         value={this.state.name}
                         onChange={this.handleTextChange.bind(this)}
                         label="name"
                         variant="outlined"
-                        style={{ textAlign: 'center', margin: "10px" }}
+                        style={{ margin: "10px" }} 
+                        size="medium"
                     />
                     <TextField
                         name="description"
@@ -52,23 +50,21 @@ export class CreateTaskForm extends Component {
                         onChange={this.handleTextChange.bind(this)}
                         label="description"
                         variant="outlined"
-                        style={{ textAlign: 'center', margin: "10px" }}
+                        style={{ margin: "10px" }} 
+                        size="medium"
                     />
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        onClick={this.hanleSumbitChange.bind(this)}
-                        style={{ textAlign: 'center', margin: "10px" }}
-                        size = 'large'
-                    >
-                        Submit
-            </Button>
-                </form>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.hanleSubmitChange.bind(this)}
+                    style={{ margin: "10px" }} 
+                    size="large"
+                >
+                    Submit
+                </Button>
             </div>
         )
     }
 }
 
 export default CreateTaskForm
-
-

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import DisplayTasks from '../../Components/DisplayTasks/DisplayTasks'
+import DisplayTasks from '../../Components/DisplayTasks'
 import { connect } from 'react-redux'
-import CreateTaskForm from '../../Components/CreateTaskForm/CreateTaskForm'
-import { createTaskRequest, updateTaskRequest, deleteTaskRequest, logoutRequest } from './action'
+import CreateTaskForm from '../../Components/CreateTaskForm'
+import { createTaskRequest, updateTaskRequest, deleteTaskRequest } from './action'
+import UpdateTaskForm from '../../Components/UpdateTaskForm'
+import { logoutRequest } from '../Login/action'
 import { Dialog, DialogActions, Button } from '@material-ui/core'
-import UpdateTaskForm from '../../Components/UpdateTaskForm/UpdateTaskForm'
 
 export class Tasks extends Component {
     constructor() {
@@ -19,50 +20,51 @@ export class Tasks extends Component {
             this.props.history.push('/')
         }
     }
-
     componentDidUpdate() {
         if (this.props.loginState.user === null) {
             this.props.history.push('/')
         }
     }
-    dispatchCreateTask(task) {
+    handleUpdateTasks(task) {
+        this.setState({
+            openDialog: true,
+            updateTask: task
+        })
+    }
+    handleCloseDialog() {
+        this.setState({
+            openDialog: false
+        })
+    }
+    dispatchCreateTaskRequest(task) {
         task.userId = this.props.loginState.user.id
         task.username = this.props.loginState.user.user_name
         this.props.dispatch(createTaskRequest(task))
-    }
-    handleUpdateTasks(user) {
-        this.setState({
-            openDialog: true,
-            updateTask: user
-        })
     }
     dispatchUpdateTaskRequest(task) {
         task.userId = this.props.loginState.user.id
         task.username = this.props.loginState.user.user_name
         this.props.dispatch(updateTaskRequest(task))
-    }
-    handleCloseDialog() {
-        this.setState({
-            openDialog: true
-        })
+        this.handleCloseDialog()
     }
     dispatchDeleteTasksRequest(taskId) {
         const task = {
-            username: this.props.loginState.user.user_name,
             userId: this.props.loginState.user.id,
+            username: this.props.loginState.user.user_name,
             id: taskId
         }
         this.props.dispatch(deleteTaskRequest(task))
     }
+    
     render() {
-        const tasks = this.props.loginState.user ? this.props.loginState.user.tasks : [];
+        const tasks = this.props.loginState.user ? this.props.loginState.user.tasks : []
         return (
             <div>
                 <Button
                     onClick={() => { this.props.dispatch(logoutRequest()) }}
                     variant="contained"
                     color="secondary"
-                    style={{float: 'right', marginTop: '10px'}}
+                    style={{ float: 'right', marginTop: '10px' }}
                 >logout
                 </Button>
                 {
@@ -73,12 +75,13 @@ export class Tasks extends Component {
                         <Button onClick={this.handleCloseDialog.bind(this)}>x</Button>
                     </DialogActions>
                     <UpdateTaskForm
-                        task={this.state.updateTask}
+                        tasks={this.state.updateTask}
                         dispatchUpdateTaskRequest={this.dispatchUpdateTaskRequest.bind(this)}
                     />
                 </Dialog>
+
                 <CreateTaskForm
-                    dispatchCreateTask={this.dispatchCreateTask.bind(this)}
+                    dispatchCreateTaskRequest={this.dispatchCreateTaskRequest.bind(this)}
                 />
                 <DisplayTasks
                     tasks={tasks}

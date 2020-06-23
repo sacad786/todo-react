@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { TextField, Button } from '@material-ui/core'
+import Button from '@material-ui/core/Button';
+import { TextField } from '@material-ui/core';
 
 export class Register extends Component {
     constructor() {
@@ -10,34 +11,26 @@ export class Register extends Component {
             surname: '',
         }
     }
-    clearForm() {
-        this.setState({
-            username: '',
-            name: '',
-            surname: ''       
-        })
-    }
     handleTextChange(e){
         this.setState({
             [e.target.name] : e.target.value
         })
     }
-    hanleSumbitChange(){
+    hanleRegisterChange(){
         const {username, name, surname} = this.state
         const user = {
             user_name: username,
             first_name: name,
-            last_name: surname,
+            last_name: surname
         }
         if (!username || !name || !surname) {
             return
         }
         this.props.dispatchCreateUserRequest(user)
-        this.clearForm()
     }
     render() {
         return (
-            <div>
+            <div className="App" style={{ margin: "10px" }}>
                 <form>
                     <TextField
                         name="username"
@@ -45,35 +38,36 @@ export class Register extends Component {
                         onChange={this.handleTextChange.bind(this)}
                         label="Username"
                         variant="outlined"
-                        style={{ textAlign: 'center', margin: "10px" }}
+                        style={{ margin: "10px" }} 
                     />
                     <br/>
                     <TextField
                         name="name"
                         value={this.state.name}
                         onChange={this.handleTextChange.bind(this)}
-                        label="Name"
+                        label="name"
                         variant="outlined"
-                        style={{ textAlign: 'center', margin: "10px" }}
+                        style={{ margin: "10px" }} 
                     />
                     <br/>
+
                     <TextField
                         name="surname"
                         value={this.state.surname}
                         onChange={this.handleTextChange.bind(this)}
-                        label="Surname"
+                        label="surname"
                         variant="outlined"
-                        style={{ textAlign: 'center', margin: "10px" }}
+                        style={{ margin: "10px" }} 
                     />
-                    <br/>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        onClick={this.hanleSumbitChange.bind(this)}
-                    >
-                    Submit
-                    </Button>
                 </form>
+                <br />
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.hanleRegisterChange.bind(this)}
+                >
+                    Register
+                </Button>
             </div>
         )
     }

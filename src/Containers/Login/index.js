@@ -1,69 +1,65 @@
 import React, { Component } from 'react'
-import LoginPage from '../../Components/Login/LoginPage'
-import Register from '../../Components/Register/Register'
-import { Button } from '@material-ui/core'
+import LoginPage from '../../Components/LoginPage/index'
+import Register from '../../Components/Register'
+import { createUserRequest, getUsernameRequest } from './action'
 import { connect } from 'react-redux'
-import { getUserNameRequest, createUserRequest } from './action'
+import { Button } from '@material-ui/core'
 
 export class Login extends Component {
     constructor() {
         super()
         this.state = {
-            showLogin: true
+            login: true
         }
     }
-
     componentWillMount(){
-        if(this.props.loginState.user){
+        if (this.props.loginState.user) {
             this.props.history.push('/tasks')
         }
     }
-
-    componentDidUpdate(){
-        if(this.props.loginState.user){
+    componentDidUpdate() {
+        if (this.props.loginState.user) {
             this.props.history.push('/tasks')
         }
     }
-    
-    dispatchUserRequest(username) {
-        this.props.dispatch(getUserNameRequest(username))
-    }
-
     dispatchCreateUserRequest(user){
         this.props.dispatch(createUserRequest(user))
     }
-
+    getUserRequested(username){
+        this.props.dispatch(getUsernameRequest(username))
+    }
     render() {
         return (
-            <div>
+            <div className="App" >
                 <Button
-                    variant={this.state.showLogin ? "outlined" : "contained"}
+                    style={{ margin: "10px" }}
+                    variant={this.state.login ? "contained" : "outlined"}
                     color="secondary"
-                    style={{ textAlign: 'center', margin: "20px" }}
-                    onClick={() => this.setState({showLogin: false})}
-                >
-                    Register
-                    </Button>
-                <Button
-                    variant={this.state.showLogin ? "contained" : "outlined"}
-                    color="secondary"
-                    onClick={() => this.setState({showLogin: true})}
+                    onClick={() => { this.setState({ login: true }) }}
                 >
                     Sign In
-                    </Button>
-                {this.state.showLogin ?
-                    <LoginPage
-                        dispatchUserRequest = {this.dispatchUserRequest.bind(this)}  
-                    /> :
-                    <Register
-                        dispatchCreateUserRequest={this.dispatchCreateUserRequest.bind(this)}
-                    />
+                </Button>
+                <Button
+                    style={{ margin: "10px" }}
+                    variant={!this.state.login ? "contained" : "outlined"}
+                    color="secondary"
+                    onClick={() => { this.setState({ login: false }) }}
+                >
+                    Register
+                </Button>
+                {this.state.login
+                 ?<LoginPage
+                    getUserRequested={this.getUserRequested.bind(this)}
+                 />
+                 :<Register
+                    dispatchCreateUserRequest = {this.dispatchCreateUserRequest.bind(this)}
+                />
                 }
             </div>
         )
     }
 }
 
-export default connect(state => ({
-    loginState: state.login
-}))(Login)
+export default connect (state => ({
+    loginState: state.login,
+})) (Login)

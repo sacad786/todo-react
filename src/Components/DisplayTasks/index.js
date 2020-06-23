@@ -38,9 +38,9 @@ export default function DisplayTasks(props) {
                                     </Fab>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Fab color="secondary" aria-label="edit"
+                                    <Fab color="secondary" 
                                         size="medium" style={{ color: "red", backgroundColor: "white" }}
-                                        onClick={() => { props.deleteTasksRequest(task.id) }}
+                                        onClick={() => { props.dispatchDeleteTasksRequest(task.id) }}
                                     >
                                         <DeleteIcon />
                                     </Fab>
@@ -53,3 +53,4 @@ export default function DisplayTasks(props) {
         </div>
     )
 }
+
