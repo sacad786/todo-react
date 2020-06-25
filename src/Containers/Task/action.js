@@ -13,7 +13,7 @@ export function getTaskSuccess(response) {
 }
 export function getTaskFail(error) {
     return {
-        type: types.GET_TASK_SUCCESS,
+        type: types.GET_TASK_FAIL,
         payload: error
     }
 }
@@ -32,7 +32,7 @@ export function createTaskSuccess(response) {
 }
 export function createTaskFail(error) {
     return {
-        type: types.CREATE_TASK_SUCCESS,
+        type: types.CREATE_TASK_FAIL,
         payload: error
     }
 }
@@ -51,7 +51,7 @@ export function updateTaskSuccess(response) {
 }
 export function updateTaskFail(error) {
     return {
-        type: types.UPDATE_TASK_SUCCESS,
+        type: types.UPDATE_TASK_FAIL,
         payload: error
     }
 }
@@ -70,7 +70,7 @@ export function deleteTaskSuccess(response) {
 }
 export function deleteTaskFail(error) {
     return {
-        type: types.DELETE_TASK_SUCCESS,
+        type: types.DELETE_TASK_FAIL,
         payload: error
     }
 }
