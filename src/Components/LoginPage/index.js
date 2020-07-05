@@ -14,7 +14,7 @@ export class LoginPage extends Component {
             [e.target.name] : e.target.value
         })
     }
-    hanleLoginChange(){
+    handleLoginChange(){
         const {userName} = this.state
             const user_name = userName
         
@@ -34,13 +34,15 @@ export class LoginPage extends Component {
                         onChange={this.handleTextChange.bind(this)}
                         label="Username"
                         variant="outlined" 
+                        id='usernameTextField'
                     />
                 </form>
                 <br/>
                 <Button
                     variant="contained"
                     color="secondary"
-                    onClick={this.hanleLoginChange.bind(this)}
+                    onClick={this.handleLoginChange.bind(this)}
+                    className="login-btn" 
                 >
                     Login
                 </Button>

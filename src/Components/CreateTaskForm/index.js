@@ -20,7 +20,7 @@ export class CreateTaskForm extends Component {
             description: "" ,
         })
     }
-    hanleSubmitChange(){
+    handleSubmitChange(){
         const {name, description} = this.state
         const task = {
             name,
@@ -43,6 +43,7 @@ export class CreateTaskForm extends Component {
                         variant="outlined"
                         style={{ margin: "10px" }} 
                         size="medium"
+                        className="createTextField"
                     />
                     <TextField
                         name="description"
@@ -52,13 +53,15 @@ export class CreateTaskForm extends Component {
                         variant="outlined"
                         style={{ margin: "10px" }} 
                         size="medium"
+                        className="createTextField"
                     />
                 <Button
                     variant="contained"
                     color="secondary"
-                    onClick={this.hanleSubmitChange.bind(this)}
+                    onClick={this.handleSubmitChange.bind(this)}
                     style={{ margin: "10px" }} 
                     size="large"
+                    className=".submit-btn"
                 >
                     Submit
                 </Button>

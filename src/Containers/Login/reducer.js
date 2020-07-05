@@ -1,10 +1,10 @@
 import * as types from '../../actionTypes'
 
-const initialState = {
+export const initialState = {
     user: null,
     error: null,
-    loader: null,
-    ddd: null
+    loader: false,
+    createUserError: null
 }
 
 export default function loginReducer(state = initialState, action) {
@@ -21,10 +21,10 @@ export default function loginReducer(state = initialState, action) {
         case types.CREATE_USER_SUCCESS:
             return {...state, loader: false, user: action.payload}
         case types.CREATE_USER_FAIL:
-            return {...state, loader: false, ddd: action.payload}
+            return {...state, loader: false, createUserError: action.payload}
 
         case types.LOGOUT:
-            return {...state, user: null, error: null, loader: null}
+            return {...state, user: null, error: null, loader: false}
             
         
         default:

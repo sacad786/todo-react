@@ -15,7 +15,7 @@ export class UpdateTaskForm extends Component {
             [e.target.name] : e.target.value
         })
     }
-    hanleSubmitChange(){
+    handleSubmitChange(){
         const {name, description} = this.state
         const task = {
             name,
@@ -41,6 +41,7 @@ export class UpdateTaskForm extends Component {
                         label="Name"
                         variant="outlined"
                         style={{ textAlign: 'center', margin: "10px" }}
+                        className="updateTextField"
                     />
                     <br/>
                     <TextField
@@ -50,13 +51,14 @@ export class UpdateTaskForm extends Component {
                         label="description"
                         variant="outlined"
                         style={{ textAlign: 'center', margin: "10px" }}
+                        className="updateTextField"
                     />
                     <br/>
                     <Button
                         variant="contained"
                         color="secondary"
-                        onClick={this.hanleSubmitChange.bind(this)}
-                        
+                        onClick={this.handleSubmitChange.bind(this)}
+                        className="submit-btn"
                     >
                     Submit
                     </Button>

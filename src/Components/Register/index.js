@@ -16,7 +16,7 @@ export class Register extends Component {
             [e.target.name] : e.target.value
         })
     }
-    hanleRegisterChange(){
+    handleRegisterChange(){
         const {username, name, surname} = this.state
         const user = {
             user_name: username,
@@ -33,6 +33,7 @@ export class Register extends Component {
             <div className="App" style={{ margin: "10px" }}>
                 <form>
                     <TextField
+                        className="usernameTextField"
                         name="username"
                         value={this.state.username}
                         onChange={this.handleTextChange.bind(this)}
@@ -42,6 +43,7 @@ export class Register extends Component {
                     />
                     <br/>
                     <TextField
+                        className="usernameTextField"
                         name="name"
                         value={this.state.name}
                         onChange={this.handleTextChange.bind(this)}
@@ -52,6 +54,7 @@ export class Register extends Component {
                     <br/>
 
                     <TextField
+                        className="usernameTextField"
                         name="surname"
                         value={this.state.surname}
                         onChange={this.handleTextChange.bind(this)}
@@ -64,7 +67,8 @@ export class Register extends Component {
                 <Button
                     variant="contained"
                     color="secondary"
-                    onClick={this.hanleRegisterChange.bind(this)}
+                    onClick={this.handleRegisterChange.bind(this)}
+                    className="register-btn"
                 >
                     Register
                 </Button>

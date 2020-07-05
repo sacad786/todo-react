@@ -1,9 +1,9 @@
 import * as types from '../../actionTypes'
 
-const initialState = {
+export const initialState = {
     task: null,
     error: null,
-    loader: null,
+    loader: false,
     updateTask: null,
     deleteTask: null
 }
