@@ -61,7 +61,7 @@ export class CreateTaskForm extends Component {
                     onClick={this.handleSubmitChange.bind(this)}
                     style={{ margin: "10px" }} 
                     size="large"
-                    className=".submit-btn"
+                    className="submit-btn"
                 >
                     Submit
                 </Button>
