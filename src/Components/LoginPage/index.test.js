@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { createMount } from '@material-ui/core/test-utils';
 import LoginPage from './index';
-import sinon from "sinon";
 
 
 
